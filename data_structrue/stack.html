@@ -1,0 +1,590 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>栈 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../base/">
+            
+                <a href="../base/">
+            
+                    
+                    基础知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../base/value.html">
+            
+                <a href="../base/value.html">
+            
+                    
+                    变量的作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1" data-path="stack.html">
+            
+                <a href="stack.html">
+            
+                    
+                    栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >栈</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6808;">&#x6808;</h1>
+<h2 id="1-&#x5B9A;&#x4E49;">1. &#x5B9A;&#x4E49;</h2>
+<p>&#x6808;&#x662F;&#x4E00;&#x79CD;&#x5177;&#x6709;&#x540E;&#x8FDB;&#x5148;&#x51FA;&#x7279;&#x70B9;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;LIFO&#xFF08;last in first out&#xFF09;</p>
+<h2 id="2-&#x4F7F;&#x7528;">2. &#x4F7F;&#x7528;</h2>
+<h3 id="21-java&#x7684;-vm-&#x6808;">2.1 Java&#x7684; VM &#x6808;</h3>
+<p>JVM&#x8FD0;&#x884C;&#x65F6;&#x4E3B;&#x8981;&#x6709;&#x4E94;&#x4E2A;&#x6570;&#x636E;&#x533A;</p>
+<p><img src="img/JVM&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#x533A;.jpg" alt=""></p>
+<p>&#x6808;&#x5E27;&#x968F;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x800C;&#x521B;&#x5EFA;&#xFF0C;&#x5B58;&#x50A8;&#x7740;&#x65B9;&#x6CD5;&#x79CD;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7B49;&#x6570;&#x636E;&#xFF0C;
+&#x521B;&#x5EFA;&#x7684;&#x6808;&#x5E27;&#x4F1A;&#x5B58;&#x5165;VM&#x6808;&#x4E2D;&#xFF0C;&#x5F53;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x5B8C;&#xFF0C;&#x6808;&#x5E27;&#x5219;&#x4F1A;&#x88AB;&#x5F39;&#x51FA;&#x3002;&#x65B9;&#x6CD5;&#x7684;&#x9012;&#x5F52;&#x5C31;&#x662F;&#x8FD9;&#x79CD;&#x601D;&#x60F3;&#xFF0C;&#x65B9;&#x6CD5;&#x4E00;&#x6B21;&#x4E00;&#x6B21;&#x5730;&#x5165;&#x6808;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6808;&#x5E27;&#x5165;&#x6808;&#xFF0C;&#x4F46;&#x5B83;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x51FA;&#x6808;&#x3002;</p>
+<h3 id="22-&#x4F7F;&#x7528;&#x6808;&#x8FDB;&#x884C;&#x6811;&#x7684;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;">2.2 &#x4F7F;&#x7528;&#x6808;&#x8FDB;&#x884C;&#x6811;&#x7684;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;</h3>
+<p>&#x6211;&#x4EEC;&#x90FD;&#x77E5;&#x9053;&#xFF0C;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;&#x53EF;&#x4EE5;&#x7528;&#x9012;&#x5F52;&#xFF0C;&#x4F46;&#x662F;&#x9012;&#x5F52;&#x90FD;&#x53EF;&#x4EE5;&#x8F6C;&#x6362;&#x6210;&#x6808;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x7528;&#x6808;&#x6765;&#x9012;&#x5F52;&#x6811;&#x7684;&#x65F6;&#x5019;&#x8981;&#x6CE8;&#x610F;&#x5148;&#x53F3;&#x5B50;&#x6811;&#x5165;&#x6808;&#xFF0C;&#x540E;&#x5DE6;&#x5B50;&#x6811;&#x5165;&#x6808;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">treeTravel</span><span class="hljs-params">(TreeNode node)</span> </span>{
+        stack.push(node);
+        <span class="hljs-keyword">while</span>(!stack.isEmpty()) {
+            TreeNode temp = stack.pop();
+            System.out.println(temp.val);
+            <span class="hljs-keyword">if</span> (temp.right != <span class="hljs-keyword">null</span>) {
+                stack.push(temp.right);
+            }
+            <span class="hljs-keyword">if</span> (temp.left != <span class="hljs-keyword">null</span>) {
+                stack.push(temp.left);
+            }
+
+        }
+    }
+</code></pre>
+<h3 id="23-android&#x4E2D;&#x7684;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;">2.3 Android&#x4E2D;&#x7684;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;</h3>
+<div align="center"><img src="img/&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x4E2D;&#x7684;&#x6808;&#x7684;&#x5E94;&#x7528;.png"></div>
+
+<p>&#x6240;&#x6709;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x7684;&#x5B50;View&#x662F;&#x4EE5;&#x94FE;&#x8868;&#x7684;&#x5F62;&#x5F0F;&#x4E32;&#x8054;&#x5230;&#x4E00;&#x8D77;&#xFF0C;&#x800C;&#x4E14;&#x662F;&#x524D;&#x5E8F;&#x63D2;&#x5165;&#xFF0C;&#x540E;&#x8FDB;&#x5148;&#x51FA;&#x3002;</p>
+<h2 id="3-&#x5B9E;&#x73B0;">3. &#x5B9E;&#x73B0;</h2>
+<h3 id="31-&#x987A;&#x5E8F;&#x5B58;&#x50A8;">3.1 &#x987A;&#x5E8F;&#x5B58;&#x50A8;</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">seqStack</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+
+    <span class="hljs-keyword">private</span> T data[];
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> top;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">seqStack</span><span class="hljs-params">()</span> </span>{
+        data=(T[]) <span class="hljs-keyword">new</span> Object[<span class="hljs-number">10</span>];
+        top=-<span class="hljs-number">1</span>;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">seqStack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> maxsize)</span>
+    </span>{
+        data=(T[]) <span class="hljs-keyword">new</span> Object[maxsize];
+        top=-<span class="hljs-number">1</span>;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> top==-<span class="hljs-number">1</span>;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">length</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> top+<span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">push</span><span class="hljs-params">(T value)</span> <span class="hljs-keyword">throws</span> Exception<span class="hljs-comment">//&#x538B;&#x5165;&#x6808;</span>
+    </span>{
+        <span class="hljs-keyword">if</span>(top+<span class="hljs-number">1</span>&gt;data.length-<span class="hljs-number">1</span>)
+        {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">&quot;&#x6808;&#x5DF2;&#x6EE1;&quot;</span>);
+        }
+        <span class="hljs-keyword">else</span> {
+            data[++top]=value;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+    }
+    <span class="hljs-function">T <span class="hljs-title">peek</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception<span class="hljs-comment">//&#x8FD4;&#x56DE;&#x6808;&#x9876;&#x5143;&#x7D20;&#x4E0D;&#x79FB;&#x9664;</span>
+    </span>{
+        <span class="hljs-keyword">if</span>(!isEmpty())
+        {
+            <span class="hljs-keyword">return</span> data[top];
+        }
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">&quot;&#x6808;&#x4E3A;&#x7A7A;&quot;</span>);
+        }
+    }
+    <span class="hljs-function">T <span class="hljs-title">pop</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception
+    </span>{
+        <span class="hljs-keyword">if</span>(isEmpty())
+        {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">&quot;&#x6808;&#x4E3A;&#x7A7A;&quot;</span>);
+        }
+        <span class="hljs-keyword">else</span> {
+           <span class="hljs-keyword">return</span> data[top--];
+        }
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span>(top==-<span class="hljs-number">1</span>)
+        {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;
+        }
+        <span class="hljs-keyword">else</span> {
+            String va=<span class="hljs-string">&quot;&quot;</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=top;i&gt;=<span class="hljs-number">0</span>;i--)
+            {
+                va+=data[i]+<span class="hljs-string">&quot;  &quot;</span>;
+            }
+            <span class="hljs-keyword">return</span> va;
+        }
+    }
+}
+
+
+&#x4F5C;&#x8005;&#xFF1A;bigsai
+&#x94FE;&#x63A5;&#xFF1A;https:<span class="hljs-comment">//juejin.im/post/5d5386b1f265da03c8151832</span>
+&#x6765;&#x6E90;&#xFF1A;&#x6398;&#x91D1;
+&#x8457;&#x4F5C;&#x6743;&#x5F52;&#x4F5C;&#x8005;&#x6240;&#x6709;&#x3002;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x8054;&#x7CFB;&#x4F5C;&#x8005;&#x83B7;&#x5F97;&#x6388;&#x6743;&#xFF0C;&#x975E;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;
+</code></pre>
+<h3 id="32-&#x94FE;&#x8868;&#x5B58;&#x50A8;">3.2 &#x94FE;&#x8868;&#x5B58;&#x50A8;</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">lisStack</span> &lt;<span class="hljs-title">T</span>&gt;</span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">node</span>&lt;<span class="hljs-title">T</span>&gt;
+    </span>{
+        T data;
+        node next;
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">node</span><span class="hljs-params">()</span> </span>{    
+        }
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">node</span><span class="hljs-params">(T value)</span>
+        </span>{
+            <span class="hljs-keyword">this</span>.data=value;
+        }
+    }
+    <span class="hljs-keyword">int</span> length;
+    node&lt;T&gt; head;<span class="hljs-comment">//&#x5934;&#x8282;&#x70B9;</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">lisStack</span><span class="hljs-params">()</span> </span>{
+        head=<span class="hljs-keyword">new</span> node&lt;&gt;();
+        length=<span class="hljs-number">0</span>;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> head.next==<span class="hljs-keyword">null</span>;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">length</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> length;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(T value)</span> </span>{<span class="hljs-comment">//&#x8FD1;&#x6808;</span>
+       node&lt;T&gt; team=<span class="hljs-keyword">new</span> node&lt;T&gt;(value);
+       <span class="hljs-keyword">if</span>(length==<span class="hljs-number">0</span>)
+       {
+           head.next=team;
+       }
+       <span class="hljs-keyword">else</span> {
+        team.next=head.next;
+        head.next=team;}
+       length++;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">peek</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-keyword">if</span>(length==<span class="hljs-number">0</span>) {<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">&quot;&#x94FE;&#x8868;&#x4E3A;&#x7A7A;&quot;</span>);}
+        <span class="hljs-keyword">else</span> {<span class="hljs-comment">//&#x5220;&#x9664;</span>
+            <span class="hljs-keyword">return</span> (T) head.next.data;
+        }
+  }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">pop</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{<span class="hljs-comment">//&#x51FA;&#x6808;</span>
+          <span class="hljs-keyword">if</span>(length==<span class="hljs-number">0</span>) {<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">&quot;&#x94FE;&#x8868;&#x4E3A;&#x7A7A;&quot;</span>);}
+          <span class="hljs-keyword">else</span> {<span class="hljs-comment">//&#x5220;&#x9664;</span>
+            T value=(T) head.next.data;
+            head.next=head.next.next;<span class="hljs-comment">//va.next</span>
+            length--;
+            <span class="hljs-keyword">return</span> value;
+
+
+        }
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">if</span>(length==<span class="hljs-number">0</span>) {<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;}
+        <span class="hljs-keyword">else</span> {
+            String va=<span class="hljs-string">&quot;&quot;</span>;
+            node team=head.next;
+            <span class="hljs-keyword">while</span>(team!=<span class="hljs-keyword">null</span>)
+            {
+                va+=team.data+<span class="hljs-string">&quot; &quot;</span>;
+                team=team.next;
+            }
+            <span class="hljs-keyword">return</span> va;
+        }
+
+    }
+}
+
+&#x4F5C;&#x8005;&#xFF1A;bigsai
+&#x94FE;&#x63A5;&#xFF1A;https:<span class="hljs-comment">//juejin.im/post/5d5386b1f265da03c8151832</span>
+&#x6765;&#x6E90;&#xFF1A;&#x6398;&#x91D1;
+&#x8457;&#x4F5C;&#x6743;&#x5F52;&#x4F5C;&#x8005;&#x6240;&#x6709;&#x3002;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x8054;&#x7CFB;&#x4F5C;&#x8005;&#x83B7;&#x5F97;&#x6388;&#x6743;&#xFF0C;&#x975E;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;
+</code></pre>
+<h2 id="4-&#x793A;&#x4F8B;&#x9898;&#x76EE;">4. &#x793A;&#x4F8B;&#x9898;&#x76EE;</h2>
+<h3 id="41-&#x5224;&#x65AD;&#x62EC;&#x53F7;&#x662F;&#x5426;&#x5408;&#x7406;">4.1 &#x5224;&#x65AD;&#x62EC;&#x53F7;&#x662F;&#x5426;&#x5408;&#x7406;</h3>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isValid</span><span class="hljs-params">(String res)</span> </span>{
+        Stack&lt;Character&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; res.length(); i++) {
+            <span class="hljs-keyword">char</span> c = res.charAt(i);
+            <span class="hljs-keyword">if</span> (isLeft(c)) {
+                stack.push(c);
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">if</span> (stack.isEmpty()) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+                }
+                <span class="hljs-keyword">if</span> (!isValid(stack.peek(), c)) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+                } <span class="hljs-keyword">else</span> {
+                    stack.pop();
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> stack.isEmpty();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isLeft</span><span class="hljs-params">(<span class="hljs-keyword">char</span> t)</span> </span>{
+        <span class="hljs-keyword">return</span> t==<span class="hljs-string">&apos;[&apos;</span> || t==<span class="hljs-string">&apos;(&apos;</span> || t==<span class="hljs-string">&apos;{&apos;</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isValid</span><span class="hljs-params">(<span class="hljs-keyword">char</span> left, <span class="hljs-keyword">char</span> right)</span> </span>{
+        <span class="hljs-keyword">switch</span> (left) {
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;[&apos;</span>:
+                <span class="hljs-keyword">return</span> right == <span class="hljs-string">&apos;]&apos;</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;{&apos;</span>:
+                <span class="hljs-keyword">return</span> right == <span class="hljs-string">&apos;}&apos;</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;(&apos;</span>:
+                <span class="hljs-keyword">return</span> right==<span class="hljs-string">&apos;)&apos;</span>;
+            <span class="hljs-keyword">default</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+    }
+</code></pre>
+<h3 id="41-&#x6CE2;&#x5170;&#x6570;">4.1 &#x6CE2;&#x5170;&#x6570;</h3>
+<pre><code class="lang-java">
+
+<span class="hljs-comment">/**
+ * &#x9006;&#x6CE2;&#x5170;&#x8868;&#x793A;&#x6CD5;&#xFF08;Reverse Polish notation&#xFF0C;RPN&#xFF0C;&#x6216;&#x9006;&#x6CE2;&#x5170;&#x8BB0;&#x6CD5;&#xFF09;&#xFF0C;
+ * &#x662F;&#x4E00;&#x79CD;&#x662F;&#x7531;&#x6CE2;&#x5170;&#x6570;&#x5B66;&#x5BB6;&#x626C;&#xB7;&#x6B66;&#x5361;&#x8C22;&#x7EF4;&#x5947;1920&#x5E74;&#x5F15;&#x5165;&#x7684;&#x6570;&#x5B66;&#x8868;&#x8FBE;&#x5F0F;&#x65B9;&#x5F0F;&#xFF0C;
+ * &#x5728;&#x9006;&#x6CE2;&#x5170;&#x8BB0;&#x6CD5;&#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7B26;&#x7F6E;&#x4E8E;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x540E;&#x9762;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x88AB;&#x79F0;&#x4E3A;&#x540E;&#x7F00;
+ * &#x8868;&#x793A;&#x6CD5;&#x3002; &#x9006;&#x6CE2;&#x5170;&#x8BB0;&#x6CD5;&#x4E0D;&#x9700;&#x8981;&#x62EC;&#x53F7;&#x6765;&#x6807;&#x8BC6;&#x64CD;&#x4F5C;&#x7B26;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x3002;
+ *
+ *
+ * &#x8BA1;&#x7B97;&#x9006;&#x6CE2;&#x5170;&#x5F0F;&#xFF08;&#x540E;&#x7F00;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#x7684;&#x503C;
+ * &#x8FD0;&#x7B97;&#x7B26;&#x4EC5;&#x5305;&#x542B;&quot;+&quot;,&quot;-&quot;,&quot;*&quot;&#x548C;&quot;/&quot;&#xFF0C;&#x88AB;&#x64CD;&#x4F5C;&#x6570;&#x53EF;&#x80FD;&#x662F;&#x6574;&#x6570;&#x6216;&#x5176;&#x4ED6;&#x8868;&#x8FBE;&#x5F0F;
+ * &#x4F8B;&#x5982;&#xFF1A;
+ *   [&quot;2&quot;, &quot;1&quot;, &quot;+&quot;, &quot;3&quot;, &quot;*&quot;] -&gt; ((2 + 1) * 3) -&gt; 9&#x21B5;
+ *
+ *   [&quot;4&quot;, &quot;13&quot;, &quot;5&quot;, &quot;/&quot;, &quot;+&quot;] -&gt; (4 + (13 / 5)) -&gt; 6
+ *
+ */</span>
+
+
+ <span class="hljs-comment">/**
+     * &#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+     * &#x901A;&#x8FC7;
+     * &#x663E;&#x793A;&#x8BE6;&#x60C5;
+     * &#x6267;&#x884C;&#x7528;&#x65F6; :
+     * 7 ms, &#x5728;&#x6240;&#x6709; Java &#x63D0;&#x4EA4;&#x4E2D;&#x51FB;&#x8D25;&#x4E86;82.48%&#x7684;&#x7528;&#x6237;
+     * &#x5185;&#x5B58;&#x6D88;&#x8017; :
+     * 39.1 MB, &#x5728;&#x6240;&#x6709; Java &#x63D0;&#x4EA4;&#x4E2D;&#x51FB;&#x8D25;&#x4E86;5.47%&#x7684;&#x7528;&#x6237;
+     * <span class="hljs-doctag">@param</span> tokens
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">evalRPN</span><span class="hljs-params">(String[] tokens)</span> </span>{
+        <span class="hljs-keyword">if</span> (tokens.length == <span class="hljs-number">1</span>) {
+            <span class="hljs-keyword">return</span> Integer.parseInt(tokens[<span class="hljs-number">0</span>]);
+        }
+        Stack&lt;Integer&gt; integerStack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+        String op;
+        <span class="hljs-keyword">int</span> var1;
+        <span class="hljs-keyword">int</span> var2;
+        <span class="hljs-keyword">int</span> value = -<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span> (String token : tokens) {
+            <span class="hljs-keyword">if</span> (!isOp(token)) {
+                integerStack.push(Integer.parseInt(token));
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">if</span> (!integerStack.isEmpty()) {
+                    var1 = integerStack.pop();
+                    var2 = integerStack.pop();
+                    integerStack.push(value = calculate(var2, var1, token));
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> value;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">calculate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, String op)</span> </span>{
+        <span class="hljs-keyword">switch</span> (op) {
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;+&quot;</span>:
+                <span class="hljs-keyword">return</span> a + b;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;-&quot;</span>:
+                <span class="hljs-keyword">return</span> a - b;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;*&quot;</span>:
+                <span class="hljs-keyword">return</span> a * b;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;/&quot;</span>:
+                <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) {
+                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;&#x9664;&#x6570;&#x4E0D;&#x80FD;&#x4E3A;0&quot;</span>);
+                }
+                <span class="hljs-keyword">return</span> a / b;
+            <span class="hljs-keyword">default</span>:
+                <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isOp</span><span class="hljs-params">(String op)</span> </span>{
+        <span class="hljs-keyword">return</span> op.equals(<span class="hljs-string">&quot;+&quot;</span>) || op.equals(<span class="hljs-string">&quot;-&quot;</span>) || op.equals(<span class="hljs-string">&quot;*&quot;</span>) || op.equals(<span class="hljs-string">&quot;/&quot;</span>);
+    }
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 数据结构">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"栈","level":"1.3.1","depth":2,"previous":{"title":"数据结构","level":"1.3","depth":1,"path":"data_structrue/README.md","ref":"data_structrue/README.md","articles":[{"title":"栈","level":"1.3.1","depth":2,"path":"data_structrue/stack.md","ref":"data_structrue/stack.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data_structrue/stack.md","mtime":"2020-05-28T09:38:40.681Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-28T09:40:44.418Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
